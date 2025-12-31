@@ -1,3 +1,19 @@
 pip install -U "huggingface_hub[cli]"
 huggingface-cli login
-  
+
+
+OR
+
+
+export HF_TOKEN="$(cat /users/mmahnoor/.cache/huggingface/token)"
+export HUGGINGFACE_HUB_TOKEN="$HF_TOKEN"
+
+then add this .sh file: 
+
+# Ensure HF auth inside the container/job
+export HF_TOKEN=$(cat /users/mmahnoor/.cache/huggingface/token)
+export HUGGINGFACE_HUB_TOKEN="$HF_TOKEN"
+export HF_HOME=/pfs/lustrep4/scratch/project_462000131/mmahnoor/hf_home
+export TRANSFORMERS_CACHE=$HF_HOME/transformers
+export HF_HUB_CACHE=$HF_HOME/hub
+
